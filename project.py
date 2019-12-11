@@ -16,4 +16,8 @@ cv2.waitKey(0)
 grayInpaintedBlack = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 (_, thresh) = cv2.threshold(grayInpaintedBlack, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
+# apply opening
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+opened = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
+
 #####################################################################################
